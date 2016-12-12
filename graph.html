@@ -1,0 +1,115 @@
+<html>
+	<head>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
+		<script type="text/javascript" src="graph.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+			
+		<title>
+			Graph Tool
+		</title>
+	</head>
+	<body>
+		<div class="canvas">
+			<canvas id="mycanvas" width="550" height="550" style="border:1px solid #000000;"></canvas>
+		</div>
+		<div class="setting">
+			<h1>
+				Setting
+			</h1>
+			<p>
+			<label for="xrange">X: range</label>
+			<input id="xfrom" name="xfrom" type="text" value="-10"/>
+			<label for="xto">to</label>
+			<input id="xto" name="xto" type="text" value="10"/>
+			</p>
+			<p>
+			<label for="yrange">Y: range</label>
+			<input id="yfrom" name="yfrom" type="text" value="-10"/>
+			<label for="yto">to</label>
+			<input id="yto" name="yto" type="text" value="10"/>
+			</p>
+			<input id="reset" type="button" value="Reset"/>
+		</div>
+		<div class="plot">
+			<h1>
+				Plot
+			</h1>
+			<p>
+			<label for="variable">Variable:</label>
+			<input id="variable" name="variable" type="text" />
+			</p>
+			<p>
+			<label for="function">Function:</label>
+			<input id="functione" name="function" type="text" />
+			</p>
+			<p>
+			<label for="color">Color:</label>
+			<input id="color" name="color" type="text" />
+			</p>
+			<input id="addfunction" type="button" value="Add Function"/>
+		</div>
+		<div class="list">
+			<h1>
+				Functions
+			</h1>
+		</div>
+		<!--        <script>-->
+			<!--            var x = 10, y = 10, dir = 1, interval;-->
+			<!--            -->
+			<!--            var startButton = document.getElementById("start");-->
+			<!--            startButton.onclick = function() {-->
+			<!--                if (startButton.value == "Start") {-->
+			<!--                    startButton.value = "Stop";-->
+			<!--                    -->
+			<!--                    interval = setInterval(frame, 20);-->
+			<!--                    function frame() {-->
+			<!--                        if (x == 5000) {-->
+			<!--                            clearInterval(id);-->
+			<!--                        } else {-->
+			<!--                            draw(x, y);-->
+			<!--                            move();-->
+			<!--                        }-->
+			<!--                    }-->
+			<!--                } else {-->
+			<!--                    startButton.value = "Start"-->
+			<!--                    clearInterval(interval);-->
+			<!--                }-->
+			<!--            }-->
+			<!--        -->
+			<!--        document.getElementById("turnL").onclick = function() {-->
+			<!--            dir = (dir + 3) % 4;-->
+			<!--        }-->
+			<!--        -->
+			<!--        document.getElementById("turnR").onclick = function() {-->
+			<!--            dir = (dir + 1) % 4;-->
+			<!--        }-->
+			<!--        -->
+			<!--        function move() {-->
+			<!--            var s=600; // width-->
+			<!--            -->
+			<!--            switch (dir) {-->
+			<!--                case 0: y--; break;-->
+			<!--                case 1: x++; break;-->
+			<!--                case 2: y++; break;-->
+			<!--                case 3: x--; break;-->
+			<!--            }-->
+			<!--            -->
+			<!--            if (x>s) x=0;-->
+			<!--            if (x<0) x=s;-->
+			<!--            if (y>s) y=0;-->
+			<!--            if (y<0) y=s;-->
+			<!--        }-->
+			<!--        -->
+			<!--        function draw(x, y) {-->
+			<!--            var context = document.getElementById("myCanvas").getContext("2d");-->
+			<!--            context.fillStyle = "lightgrey";-->
+			<!--            context.rect(x, y, 10, 10);-->
+			<!--            context.fill();-->
+			<!--        }-->
+			<!--        </script>-->
+	</body>
+</html>
+
+
