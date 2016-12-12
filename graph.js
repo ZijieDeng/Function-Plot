@@ -10,7 +10,7 @@ $(function() {
 	drawXYAxes();
 	drawInitGrids();
 
-	plotxsquare();
+	plotfunction("x ^ 2", "red", 5);
 
 	function resetxyrange() {
 		xmin = parseInt($("#xfrom").val());
@@ -22,12 +22,38 @@ $(function() {
 		console.log("reset range: x from " + xmin + " to " + xmax + " and y from " + ymin + " to " + ymax);
 	}
 
+	function replacex(str, x) {
+		return str.replace(/x/g, x);
+	}
+
 	function clearcanvas()
 	{
 		var context = document.getElementById("mycanvas").getContext("2d");
 		context.clearRect(0, 0, canvaswidth, canvasheight);
 	}
 
+	function evalfunction(expression, x)
+	{
+
+		var express = replacex(expression, "(" + x + ")");
+		return math.eval(express);
+	}
+
+	// expression is of form like "x^2"
+	function plotfunction(expression, color, size) {
+
+		for (x = xmin; x<=xmax; x+=0.1)
+		{
+
+			y = evalfunction(expression, x);
+
+			var p = fromCartesian(x, y);
+
+			// TODO font size
+			drawcs(p.x, p.y, color, size);
+		}
+
+	}
 
 	function plotxsquare() {
 
@@ -46,23 +72,28 @@ $(function() {
 	// redraw and reset
 	$("#reset").click(function() {
 
-		clearcanvas();
-
-		resetxyrange();
-
-		drawXYAxes();
-		drawInitGrids();
-
-		plotxsquare();
+		clearplots();
 
 
 	});
 
+	function clearplots() {
+		clearcanvas();
+		resetxyrange();
+		drawXYAxes();
+
+		drawInitGrids();
+
+		$("#functions").html("");
+	}
 
 	$("#addfunction").click(function() {
-		console.log("clicked");
 
-		drawLine(0, 0, 50, 50);
+		// clearplots();
+
+		var functionexpression = $("#functionexpression").val();
+
+		plotfunction(functionexpression, "red", 5);
 	});
 
 	function drawXYAxes()
@@ -73,16 +104,27 @@ $(function() {
 		drawLine(p.x, 0, p.x, canvasheight);
 	}
 
-
 	function drawInitGrids()
 	{
-		for (i = xmin+1; i < xmax; i++)
+		for (i = 1; i < xmax; i++)
 		{
 			if (i!=0)
 				drawGrids(i, i);
 
 		}
-		for (i = ymin+1; i < ymax; i++)
+		for (i = -1; i > xmin; i--)
+		{
+			if (i!=0)
+				drawGrids(i, i);
+
+		}
+		for (i = 1; i < ymax; i++)
+		{
+			if (i!=0)
+				drawGrids(i, i);
+
+		}
+		for (i = -1; i > ymin; i--)
 		{
 			if (i!=0)
 				drawGrids(i, i);
@@ -113,7 +155,6 @@ $(function() {
 		return p;
 	}
 
-
 	function drawLineDash(x1, y1, x2, y2)
 	{
 		var context = document.getElementById("mycanvas").getContext("2d");
@@ -134,72 +175,58 @@ $(function() {
 		// TODO color
 		context.fillStyle = "red";
 
+		context.setLineDash([1, 0]);
 		context.beginPath();
 		context.moveTo(x1, y1);
 		context.lineTo(x2, y2);
 		context.stroke();
 	}
 
-	function draws(x, y, size) {
+	function drawcs(x, y, color, size) {
+
 		var context = document.getElementById("mycanvas").getContext("2d");
 
 		// TODO color
-		context.fillStyle = "red";
+		context.fillStyle = color;
 		context.rect(x, y, size, size);
 		context.fill();
 	}
 
+	function draws(x, y, size) {
+		drawcs(x, y, "red", size);
+	}
+
 	function draw(x, y) {
-		draws(x, y, size);
+		draws(x, y, 5);
+	}
+
+	$("#animate").click(function() {
+
+		// clearplots();
+
+		var x = xmin;
+		var interval = setInterval(function() {
+
+			y = evalfunction($("#functionexpression").val(), x);
+
+			// TODO animate step
+			var p = fromCartesian(x, y);
+			draws(p.x, p.y, 5);
+
+			x+=0.1;
+
+			if (x > xmax)
+			clearInterval(interval);
+
+		}, 10);
+
+		addFunctionToList($("#functionexpression").val());
+	});
+
+	function addFunctionToList(expression) {
+
+		$("#functions").append("<p>" + expression + "</p>");
 	}
 
 });
 
-/*
-   var x = 10, y = 10, dir = 1, interval;
-
-   var startButton = document.getElementById("start");
-   startButton.onclick = function() {
-   if (startButton.value == "Start") {
-   startButton.value = "Stop";
-
-   interval = setInterval(frame, 20);
-   function frame() {
-   if (x == 5000) {
-   clearInterval(id);
-   } else {
-   draw(x, y);
-   move();
-   }
-   }
-   } else {
-   startButton.value = "Start"
-   clearInterval(interval);
-   }
-   }
-
-   document.getElementById("turnL").onclick = function() {
-   dir = (dir + 3) % 4;
-   }
-
-   document.getElementById("turnR").onclick = function() {
-   dir = (dir + 1) % 4;
-   }
-
-   function move() {
-   var s=600; // width
-
-   switch (dir) {
-   case 0: y--; break;
-   case 1: x++; break;
-   case 2: y++; break;
-   case 3: x--; break;
-   }
-
-   if (x>s) x=0;
-   if (x<0) x=s;
-   if (y>s) y=0;
-   if (y<0) y=s;
-   }
-
- */
