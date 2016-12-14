@@ -49,7 +49,11 @@ $(function() {
 
 			var p = fromCartesian(x, y);
 
-			// TODO font size
+			console.log("size? " + $("#linesize").val());
+
+			size = parseInt($("#linesize").val());
+			if (isNaN(size)) size = 5;
+
 			drawcs(p.x, p.y, color, size);
 		}
 
@@ -63,8 +67,11 @@ $(function() {
 
 			var p = fromCartesian(x, y);
 
-			// TODO font size
-			draws(p.x, p.y, 5);
+
+			size = parseInt($("#linesize").val());
+			if (isNaN(size)) size = 5;
+
+			draws(p.x, p.y, size);
 		}
 
 	}
@@ -106,25 +113,28 @@ $(function() {
 
 	function drawInitGrids()
 	{
-		for (i = 1; i < xmax; i++)
+		var size = parseInt($("#gridsize").val());
+		if (isNaN(size)) size = 1;
+
+		for (i = size; i < xmax; i+=size)
 		{
 			if (i!=0)
 				drawGrids(i, i);
 
 		}
-		for (i = -1; i > xmin; i--)
+		for (i = -size; i > xmin; i-=size)
 		{
 			if (i!=0)
 				drawGrids(i, i);
 
 		}
-		for (i = 1; i < ymax; i++)
+		for (i = size; i < ymax; i+=size)
 		{
 			if (i!=0)
 				drawGrids(i, i);
 
 		}
-		for (i = -1; i > ymin; i--)
+		for (i = -size; i > ymin; i-=size)
 		{
 			if (i!=0)
 				drawGrids(i, i);
@@ -160,8 +170,9 @@ $(function() {
 		var context = document.getElementById("mycanvas").getContext("2d");
 		context.fillStyle = "red";
 
-		// TODO dash settings
-		context.setLineDash([5, 10]);
+		var size = 5;
+
+		context.setLineDash([size, size * 2]);
 		context.beginPath();
 		context.moveTo(x1, y1);
 		context.lineTo(x2, y2);
@@ -172,8 +183,9 @@ $(function() {
 	{
 		var context = document.getElementById("mycanvas").getContext("2d");
 
-		// TODO color
-		context.fillStyle = "red";
+		var color = $("#color").val();
+
+		context.fillStyle = color;
 
 		context.setLineDash([1, 0]);
 		context.beginPath();
@@ -186,7 +198,8 @@ $(function() {
 
 		var context = document.getElementById("mycanvas").getContext("2d");
 
-		// TODO color
+		var color = $("#color").val();
+
 		context.fillStyle = color;
 		context.rect(x, y, size, size);
 		context.fill();
@@ -211,7 +224,11 @@ $(function() {
 
 			// TODO animate step
 			var p = fromCartesian(x, y);
-			draws(p.x, p.y, 5);
+
+			var	size = parseInt($("#linesize").val());
+			if (isNaN(size)) size = 5;
+
+			draws(p.x, p.y, size);
 
 			x+=0.1;
 

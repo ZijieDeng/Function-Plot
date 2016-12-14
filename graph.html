@@ -21,12 +21,16 @@
 			<p>
 			<label for="xrange">X: range</label>
 			<input id="xfrom" name="xfrom" type="text" value="-10"/>
+			</p>
+			<p>
 			<label for="xto">to</label>
 			<input id="xto" name="xto" type="text" value="10"/>
 			</p>
 			<p>
 			<label for="yrange">Y: range</label>
 			<input id="yfrom" name="yfrom" type="text" value="-10"/>
+			</p>
+			<p>
 			<label for="yto">to</label>
 			<input id="yto" name="yto" type="text" value="10"/>
 			</p>
@@ -38,15 +42,11 @@
 			</h1>
 			<p>
 			<label for="variable">Variable:</label>
-			<input id="variable" name="variable" type="text" />
+			<input id="variable" name="variable" type="text" value="x"/>
 			</p>
 			<p>
 			<label for="function">Function:</label>
-			<input id="functionexpression" name="function" type="text" />
-			</p>
-			<p>
-			<label for="color">Color:</label>
-			<input id="color" name="color" type="text" />
+			<input id="functionexpression" name="function" type="text" value="x^2"/>
 			</p>
 			<!-- input id="addfunction" type="button" value="Add Function"/ -->
 			<input id="animate" type="button" value="Add Function"/>
@@ -57,6 +57,31 @@
 			</h1>
 			<div id="functions">
 			</div>
+		</div>
+		<div class="Design">
+			<h1>
+				Design
+			</h1>
+			<p>
+			<label for="fontsize">Font Size:</label>
+			<input id="linesize" name="linesize" type="text" value="5"/>
+			</p>
+			<p>
+			<label for="gridsize">Grid Size:</label>
+			<input id="gridsize" name="gridsize" type="text" value="1"/>
+			</p>
+			<p>
+			<label for="gridstyle">Grid Style:</label>
+			<select>
+				<option disabled selected value>Select</option>
+				<option value="solidline">Solid Line</option>
+				<option value="dottedline">Dotted Line</option>
+			</select>
+			</p>
+			<p>
+			<label for="color">Color:</label>
+			<input id="color" name="color" type="text" value="red"/>
+			</p>
 		</div>
 	</body>
 </html>

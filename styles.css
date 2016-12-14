@@ -11,13 +11,13 @@ div.canvas{
 	border: 2px solid #F5F5F5;
 /*	background: linear-gradient(#FFFFFF,#c6d9ec);*/
 	position: absolute;
-	left: 550px;
-	top: 150px;
+	left: 440px;
+	top: 100px;
 	overflow: scroll;
 }
 div.list{
-	width: 280px;
-	height: 580px;
+	width: 350px;
+	height: 350px;
 	padding: 100px, 100px, 100px, 100px;
 	border: 2px solid #F5F5F5;
 	border-radius: 15px;
@@ -27,13 +27,13 @@ div.list{
 	border-bottom-left-radius:5em;
 /*	background: linear-gradient(#FFFFFF,#c6d9ec);*/
 	position: absolute;
-	left: 1130px;
-	top: 150px;
+	left: 1050px;
+	top: 50px;
 /*	overflow: scroll;*/
 }
 div.plot{
-	width: 480px;
-	height: 270px;
+	width: 350px;
+	height: 350px;
 	padding: 100px, 100px, 100px, 100px;
 	border: 2px solid #F5F5F5;
 	border-radius: 15px;
@@ -44,12 +44,12 @@ div.plot{
 /*	background: linear-gradient(#FFFFFF,#c6d9ec);*/
 	position: absolute;
 	left: 60px;
-	top: 460px;
+	top: 410px;
 /*	overflow: scroll;*/
 }
 div.setting{
-	width: 480px;
-	height: 300px;
+	width: 350px;
+	height: 350px;
 	padding: 100px, 100px, 100px, 100px;
 	border: 2px solid #F5F5F5;
 	border-radius: 15px;
@@ -60,7 +60,22 @@ div.setting{
 /*	background: linear-gradient(#FFFFFF,#c6d9ec);*/
 	position: absolute;
 	left: 60px;
-	top: 150px;
+	top: 50px;
+}
+div.Design{
+width: 350px;
+height: 350px;
+padding: 100px, 100px, 100px, 100px;
+border: 2px solid #F5F5F5;
+border-radius: 15px;
+border-top-left-radius:1em;
+border-top-right-radius:5em;
+border-bottom-right-radius:1em;
+border-bottom-left-radius:5em;
+/*	background: linear-gradient(#FFFFFF,#c6d9ec);*/
+position: absolute;
+left: 1050px;
+top: 410px;
 }
 
 h1 {
@@ -74,19 +89,28 @@ label {
 	font: 24px sans-serif;
 	display: inline-block;
 	text-align: left;
-	width: 150px;
+	width: 160px;
 	position: relative;
-	left: 50px;
+	left: 20px;
 /*	top: 27px;*/
 }
 input[type='text'] {
 	font: 20px sans-serif;
-	width: 300px;
+	width: 160px;
 	height: 35px;
 	border: 1px solid lightslategrey;
 	background: transparent;
 	position: relative;
-	left: px;
+/*	left: px;*/
+}
+select {
+	font: 20px sans-serif;
+	width: 160px;
+	height: 35px;
+	border: 1px solid lightslategrey;
+	background: transparent;
+	position: relative;
+	/*	left: px;*/
 }
 input [type='checkbox'] {
 	width: 35px;
@@ -101,7 +125,7 @@ option:checked {
 }
 input[type='button'] {
 	font: 20px sans-serif;
-	width: 240px;
+	width: 200px;
 	height: 35px;
 /*	background: linear-gradient(#FFFFFF,#FFE4E1);*/
 /*	border: 1px solid #FFE4E1;*/
