@@ -217,6 +217,9 @@ $(function() {
 
 		// clearplots();
 
+		var	speed = parseInt($("#animatespeed").val());
+		if (isNaN(speed)) speed = 10;
+
 		var x = xmin;
 		var interval = setInterval(function() {
 
@@ -229,13 +232,12 @@ $(function() {
 			if (isNaN(size)) size = 5;
 
 			draws(p.x, p.y, size);
-
-			x+=0.1;
+			x+= 0.1;
 
 			if (x > xmax)
 			clearInterval(interval);
 
-		}, 10);
+		}, 100 / speed);
 
 		addFunctionToList($("#functionexpression").val());
 	});
